@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\FiorellaFriendController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -19,17 +20,5 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/fiorella/{friend?}', [FiorellaFriendController::class, 'show']);
 
-Route::get('/a-propos', function () {
-    return view('about', [
-        'name' => 'Laravel',
-        'team' => [
-            ['name' => 'Marina'],
-            ['name' => 'Fiorella'],
-            ['name' => 'Matthieu'],
-        ], 
-    ]);
-});
-
-Route::get('/a-propos/{user}', function (string $user) {
-    return view('about-show', ['user' => $user]);
-});
+Route::get('/a-propos', [AboutController::class, 'index']);
+Route::get('/a-propos/{user}', [AboutController::class, 'show']);
