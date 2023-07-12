@@ -36,3 +36,18 @@ Route::get('/fiorella/{friend?}', function (Request $request, string $friend = n
         'friend' => ucfirst($friend),
     ]);
 });
+
+Route::get('/a-propos', function () {
+    return view('about', [
+        'name' => 'Laravel',
+        'team' => [
+            ['name' => 'Marina'],
+            ['name' => 'Fiorella'],
+            ['name' => 'Matthieu'],
+        ], 
+    ]);
+});
+
+Route::get('/a-propos/{user}', function (string $user) {
+    return view('about-show', ['user' => $user]);
+});
