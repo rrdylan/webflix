@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home',[
+        'title' => 'Webflix',
+        'numbers' => [1,2,3],
+    ]);
+});
+
+Route::get('/Billy/{friend?}', function(Request $request, string $friend = null){
+    return view('billy', [
+    'name'=> 'Billy',
+    'age' => Carbon::parse('1996-1-1')->age,
+    'friend' => ucfirst($friend),
+    ]);
+});
+
+Route::get('/Philippe', function(){
+    return view('philippe');
+});
+
+Route::get('/a-propos/{user?}', function(string $user = null){
+    $team = ['Billy', 'Bob', 'Olaf'];
+    if( isset($user) && !in_array($user, $team)){
+        abort(404);
+    }
+
+    return view('a-propos',[
+        'name'=>'A propos',
+        'team'=> $team,
+        'user'=>ucfirst($user), 
+    ]);
 });
