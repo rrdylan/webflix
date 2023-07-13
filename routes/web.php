@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FiorellaFriendController;
 use App\Http\Controllers\HomeController;
 use App\Models\Category;
@@ -24,9 +25,10 @@ Route::get('/fiorella/{friend?}', [FiorellaFriendController::class, 'show']);
 Route::get('/a-propos', [AboutController::class, 'index']);
 Route::get('/a-propos/{user}', [AboutController::class, 'show']);
 
-Route::get('/categories', function () {
-    return Category::all();
-});
+// CRUD = Create, Read, Update, Delete pour les catégories
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/creer', [CategoryController::class, 'create']);
+Route::post('/categories/creer', [CategoryController::class, 'store']);
 
 Route::get('/category-test', function () {
     $category = new Category();
