@@ -14,7 +14,7 @@
 
         <div>
             <label for="synopsis">Synopsis</label>
-            <textarea name="synopsis" id="synopsis"></textarea>
+            <textarea name="synopsis" id="synopsis">{{ old('synopsis') }}</textarea>
             @error('synopsis')
                 <div>{{ $message }}</div>
             @enderror
@@ -22,7 +22,7 @@
 
         <div>
             <label for="duration">Durée</label>
-            <input type="text" name="duration" id="duration">
+            <input type="text" name="duration" id="duration" value="{{ old('duration') }}">
             @error('duration')
                 <div>{{ $message }}</div>
             @enderror
@@ -30,7 +30,7 @@
 
         <div>
             <label for="youtube">Youtube</label>
-            <input type="text" name="youtube" id="youtube">
+            <input type="text" name="youtube" id="youtube" value="{{ old('youtube') }}">
             @error('youtube')
                 <div>{{ $message }}</div>
             @enderror
@@ -38,7 +38,7 @@
 
         <div>
             <label for="released_at">Date de sortie</label>
-            <input type="date" name="released_at" id="released_at">
+            <input type="date" name="released_at" id="released_at" {{ old('released_at') }}>
             @error('released_at')
                 <div>{{ $message }}</div>
             @enderror
