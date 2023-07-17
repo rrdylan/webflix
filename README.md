@@ -28,3 +28,17 @@ N'oublions pas de générer la clé :
 ```bash
 php artisan key:generate
 ```
+
+Pour la base de données, on a les migrations :
+
+```bash
+php artisan migrate
+```
+
+## Outils
+
+Si on veut lister les routes de l'application :
+
+```bash
+php artisan route:list
+```
