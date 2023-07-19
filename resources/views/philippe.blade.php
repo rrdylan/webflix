@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Hello Fiorella</h1>
+    <h1>PHILIIIIPPPEEEEEE</h1>
     <p>Tu as {{ $age }} ans</p>
 
     @if ($age >= 18)

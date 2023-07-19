@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
-class FiorellaFriendController extends Controller
+class PhilippeFriendController extends Controller
 {
     public function show(Request $request, string $friend = null)
     {
@@ -14,7 +14,7 @@ class FiorellaFriendController extends Controller
         dump($request->input('color', 'rose')); // Nouvelle méthode...
         dump(request('color')); // Méthode rapide...
 
-        return view('fiorella', [
+        return view('Philippe', [
             'age' => Carbon::parse('2019-12-31')->age,
             'color' => $request->input('color', 'rose'),
             'friend' => ucfirst($friend),

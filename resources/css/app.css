@@ -1,0 +1,30 @@
+body {
+    background-color: whitesmoke;
+}
+
+.list-movie-title h3{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 15px;
+    
+}
+
+.list-movie-title a{
+    color:#000;
+}
+
+.list-movie-title a:hover{
+    text-decoration: none;
+}
+
+
+
+.list-movie-meta{
+    font-size: 14px;
+    text-align: center;
+}
+
+.list-movie-image{
+    object-fit: cover;
+    height: 400px;
+}

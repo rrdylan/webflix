@@ -3,10 +3,11 @@
 @section('content')
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
+        @method('put')
 
         <div>
             <label for="title">Titre</label>
-            <input type="text" name="title" id="title" value="{{ old('title') }}">
+            <input type="text" name="title" id="title" value="{{ old('title', $movie->title) }}">
             @error('title')
                 <div>{{ $message }}</div>
             @enderror
@@ -14,7 +15,7 @@
 
         <div>
             <label for="synopsis">Synopsis</label>
-            <textarea name="synopsis" id="synopsis">{{ old('synopsis') }}</textarea>
+            <textarea name="synopsis" id="synopsis">{{ old('synopsis', $movie->synopsis) }}</textarea>
             @error('synopsis')
                 <div>{{ $message }}</div>
             @enderror
@@ -22,7 +23,7 @@
 
         <div>
             <label for="duration">Durée</label>
-            <input type="text" name="duration" id="duration" value="{{ old('duration') }}">
+            <input type="text" name="duration" id="duration" value="{{ old('duration',$movie->duration) }}">
             @error('duration')
                 <div>{{ $message }}</div>
             @enderror
@@ -30,7 +31,7 @@
 
         <div>
             <label for="youtube">Youtube</label>
-            <input type="text" name="youtube" id="youtube" value="{{ old('youtube') }}">
+            <input type="text" name="youtube" id="youtube" value="{{ old('youtube', $movie->youtube) }}">
             @error('youtube')
                 <div>{{ $message }}</div>
             @enderror
@@ -42,11 +43,12 @@
             @error('cover')
                 <div>{{ $message }}</div>
             @enderror
+            <img src="{{ $movie->cover }}" alt=" {{ $movie->title}}">
         </div>
 
         <div>
             <label for="released_at">Date de sortie</label>
-            <input type="date" name="released_at" id="released_at" {{ old('released_at') }}>
+            <input type="date" name="released_at" id="released_at" value="{{old('released_at', $movie->released_at->format('Y-m-d'))}}" >
             @error('released_at')
                 <div>{{ $message }}</div>
             @enderror
@@ -57,7 +59,7 @@
             <select name="category" id="category">
                 <option disabled selected>Choisir une catégorie</option>
                 @foreach ($categories->sortBy('name') as $category)
-                    <option value="{{ $category->id }}" @selected($category->id == old('category'))>
+                    <option value="{{ $category->id }}" @selected($category->id == old('category', $movie->category_id))>
                         {{ $category->name }}
                     </option>
                 @endforeach
