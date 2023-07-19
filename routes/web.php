@@ -63,3 +63,10 @@ Route::get('/account', [AccountController::class, 'index'])->middleware('auth');
 
 // Acteurs
 Route::get('/actors',[ActorController::class,'index'])->middleware('auth');
+Route::get('/actors/creer',[ActorController::class, 'create'])->middleware('auth');
+Route::post('actors/creer', [ActorController::class, 'store'])->middleware('auth');
+
+Route::get('/actor/{id}', [ActorController::class,'show'])->middleware('auth');
+Route::get('/actor/{actor}/modifier', [ActorController::class, 'edit'])->middleware('auth');
+Route::put('/actor/{actor}/modifier', [ActorController::class, 'update'])->middleware('auth');
+Route::delete('/actor/{id}', [ActorController::class, 'destroy'])->middleware('auth');

@@ -12,4 +12,17 @@ class ActorController extends Controller
             'actors' => Actor::paginate(10)
         ]);
     }
+
+    public function show(string $id){
+        $actor = Actor::findOrFail($id);
+
+        return view('actors.show', ['actor'=> $actor]);
+    }
+
+    public function create()
+    {
+        return view('actors.create');
+    }
+
+    public function store(Request $request)
 }

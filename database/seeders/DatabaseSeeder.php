@@ -64,9 +64,7 @@ class DatabaseSeeder extends Seeder
 
                 $a = Actor::firstOrCreate([
                     'id'=> $actor["id"],
-                    //'gender'=> $actor["gender"],
                     'name'=> $actor["name"],
-                    //'original_name'=> $actor["original_name"],
                     'pic'=> 'https://image.tmdb.org/t/p/w400'.$actor["profile_path"],
                 ]);
 
