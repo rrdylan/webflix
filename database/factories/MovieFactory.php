@@ -18,12 +18,13 @@ class MovieFactory extends Factory
     public function definition(): array
     {
         return [
-           'title'=>fake()->sentence(3),
-           'synopsis'=>fake()->text(),
-           'duration'=>fake()->numberBetween(100,200),
-           'youtube'=>Str::random(8),
-           'cover'=> 'picsum.photos/id/'.rand(0,1084).'/400/400',
-           'released_at'=>fake()->dateTimeBetween('-50 years','+50 years'),
+            'title'=>fake()->sentence(3),
+            'synopsis'=>fake()->text(),
+            'duration'=>fake()->numberBetween(100,200),
+            'price'=>fake()->numberBetween(100,10000),
+            'youtube'=>Str::random(8),
+            'cover'=> 'picsum.photos/id/'.rand(0,1084).'/400/400',
+            'released_at'=>fake()->dateTimeBetween('-50 years','+50 years'),
         ];
     }
 }

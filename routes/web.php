@@ -58,15 +58,14 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::delete('/logout', [LoginController::class, 'destroy']);
 
 // Mon compte
-
 Route::get('/account', [AccountController::class, 'index'])->middleware('auth');
 
 // Acteurs
 Route::get('/actors',[ActorController::class,'index'])->middleware('auth');
-Route::get('/actors/creer',[ActorController::class, 'create'])->middleware('auth');
-Route::post('actors/creer', [ActorController::class, 'store'])->middleware('auth');
+Route::get('/actors/creer',[ActorController::class, 'create'])->middleware('auth'); //TODO
+Route::post('actors/creer', [ActorController::class, 'store'])->middleware('auth'); //TODO
 
-Route::get('/actor/{id}', [ActorController::class,'show'])->middleware('auth');
-Route::get('/actor/{actor}/modifier', [ActorController::class, 'edit'])->middleware('auth');
-Route::put('/actor/{actor}/modifier', [ActorController::class, 'update'])->middleware('auth');
-Route::delete('/actor/{id}', [ActorController::class, 'destroy'])->middleware('auth');
+Route::get('/actor/{id}', [ActorController::class,'show'])->middleware('auth'); //TODO
+Route::get('/actor/{actor}/modifier', [ActorController::class, 'edit'])->middleware('auth'); //TODO
+Route::put('/actor/{actor}/modifier', [ActorController::class, 'update'])->middleware('auth'); //TODO
+Route::delete('/actor/{id}', [ActorController::class, 'destroy'])->middleware('auth'); //TODO

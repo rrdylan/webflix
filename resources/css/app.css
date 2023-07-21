@@ -1,3 +1,10 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
     background-color: whitesmoke;
 }
@@ -28,3 +35,4 @@ body {
     object-fit: cover;
     height: 400px;
 }
+

@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('actors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('pic')->nullable();
+            $table->longText('biography')->nullable();
+            $table->date('birthday');
+            $table->date('deathday')->nullable();
+            $table->string('profil')->nullable();
+            $table->string('origin')->nullable();
             $table->timestamps();
         });
     }

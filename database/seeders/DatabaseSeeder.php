@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Actor;
 use App\Models\Category;
 use App\Models\Movie;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
@@ -35,17 +36,19 @@ class DatabaseSeeder extends Seeder
         [
             'api_key' => config('services.themoviedb.key'),
             'language' => 'fr-FR',
-            'append_to_response' => 'videos,credits',
         ])->throw()->json('results');
-
+        
+        
         foreach($results as $result){
             $result = Http::get('https://api.themoviedb.org/3/movie/'.$result['id'],
             [
                 'api_key'=> config('services.themoviedb.key'),
                 'language' => 'fr-FR',
-                'append_to_response' => 'video,credits'
-            ])->throw()->json();
-               // dump($result);
+                'append_to_response' => 'videos,credits',
+                ])->throw()->json();
+                
+                //dump($result);
+            
 
             $movie = Movie::factory()->create([
                 'title'=> $result['title'],
@@ -61,14 +64,25 @@ class DatabaseSeeder extends Seeder
             $actors = $result["credits"]["cast"];
 
             foreach($actors as $actor){
+                $data_actor = Http::get("https://api.themoviedb.org/3/person/".$actor['id'],
+                [
+                    'api_key'=> config('services.themoviedb.key'),
+                    'language' => 'fr-FR',
+                    'append_to_response' => 'videos,credits',
+                    ])->throw()->json();
 
-                $a = Actor::firstOrCreate([
-                    'id'=> $actor["id"],
-                    'name'=> $actor["name"],
-                    'pic'=> 'https://image.tmdb.org/t/p/w400'.$actor["profile_path"],
+                $person = Actor::firstOrCreate([
+                    
+                    'name'=>$data_actor['name'],
+                    'biography'=>$data_actor['biography'],
+                    'birthday'=>Carbon::parse($data_actor['birthday']),
+                    'deathday'=>Carbon::parse($data_actor['deathday']) ?? null,
+                    'origin'=>$data_actor['place_of_birth'],
+                    'profil'=> (isset($data_actor['profile_path'])) ? 'https://image.tmdb.org/t/p/w400'.$data_actor['profile_path'] : null,
+
                 ]);
 
-                $movie->actors()->attach($a);
+                $movie->actors()->attach($person);
             }
 
         }
