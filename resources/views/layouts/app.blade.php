@@ -13,7 +13,7 @@
         <nav>
             <a href="/"></a>
             <a href="/Billy">Ici Billy</a>
-            <a href="/a-propos">A propos</a>
+            <a href="/about/">A propos</a>
         </nav>
 
        @yield('content')

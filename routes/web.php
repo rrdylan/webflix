@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,12 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home',[
-        'title' => 'Webflix',
-        'numbers' => [1,2,3],
-    ]);
-});
+Route::get('/', [HomeController::class,'index']);
 
 Route::get('/Billy/{friend?}', function(Request $request, string $friend = null){
     return view('billy', [
@@ -34,15 +31,4 @@ Route::get('/Philippe', function(){
     return view('philippe');
 });
 
-Route::get('/a-propos/{user?}', function(string $user = null){
-    $team = ['Billy', 'Bob', 'Olaf'];
-    if( isset($user) && !in_array($user, $team)){
-        abort(404);
-    }
-
-    return view('a-propos',[
-        'name'=>'A propos',
-        'team'=> $team,
-        'user'=>ucfirst($user), 
-    ]);
-});
+Route::get('/about/{user?}', [AboutController::class, 'index']);
