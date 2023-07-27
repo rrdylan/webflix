@@ -29,6 +29,9 @@
                     <a class="nav-link" href="/a-propos">A propos</a>
                 </div>
                 <div class="navbar-nav">
+                    <a href="/panier" class="nav-link {{ request()->is('panier') ? 'active' : ''}}">
+                        Panier ({{ count (session('cart', [])) }})
+                    </a>
                     @auth
                     <li class="nav-item dropdown">
                         <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

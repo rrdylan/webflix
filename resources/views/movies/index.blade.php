@@ -29,8 +29,14 @@
                     </div>
                 </a>
             
-                @if(Auth::user() && $movie->user_id === Auth::user()->id)
                 <div class="text-center">
+                    <form class="d-inline" action="/panier/{{ $movie->id }}" method="post">
+                        @csrf
+                        <button class="btn btn-lg">
+                            🛒
+                        </button>
+                    </form>
+                    @if(Auth::user() && $movie->user_id === Auth::user()->id)
                     <a href="/film/{{$movie->id}}/modifier" class="btn btn-lg"> 🖋 </a>
                         <form action="/film/{{ $movie->id}}" method="post" class="d-inline">
                         @csrf

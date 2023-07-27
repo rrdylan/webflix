@@ -69,3 +69,7 @@ Route::get('/actor/{id}', [ActorController::class,'show'])->middleware('auth'); 
 Route::get('/actor/{actor}/modifier', [ActorController::class, 'edit'])->middleware('auth'); //TODO
 Route::put('/actor/{actor}/modifier', [ActorController::class, 'update'])->middleware('auth'); //TODO
 Route::delete('/actor/{id}', [ActorController::class, 'destroy'])->middleware('auth'); //TODO
+
+// Panier
+Route::get('/panier');
+Route::post('/panier/{movie}');
