@@ -14,3 +14,4 @@
         <p>Fiorella joue avec {{ $friend }}</p>
     @endif
 @endsection
+

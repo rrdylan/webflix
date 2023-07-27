@@ -1,5 +1,6 @@
 @extends('layouts/app')
 
+<<<<<<< HEAD
 @section('title')
     Accueil - @parent
 @endsection
