@@ -12,11 +12,11 @@
         @foreach ($movies as $movie)
             <div class="col d-flex flex-column list-movie-title justify-content-between">
                 <a href="/film/{{ $movie->id }}">
-                    <img class="list-movie-image img-fluid w-100" src="{{ $movie->cover}}" ="{{ $movie->title}}"/>
                     <div class="list-movie-data flex-grow-1 justify-content-between">
                         <h3>
                             {{ $movie->title }}
                         </h3>
+                        <img class="list-movie-image img-fluid w-100" src="{{ $movie->cover}}" ="{{ $movie->title}}"/>
                         <p>
                             {{ Str::words($movie->synopsis, 10) }}
                         </p>

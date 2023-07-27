@@ -26,6 +26,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                     <a class="nav-link" href="/films">Films</a>
+                    <a class="nav-link" href="/films-react">Films avec react</a>
                     <a class="nav-link" href="/actors">Acteurs</a>
                     <a class="nav-link" href="/philippe">PHILIPPE !!</a>
                     <a class="nav-link" href="/a-propos">A propos</a>

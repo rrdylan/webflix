@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Models\Category;
 
+use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,11 +68,21 @@ Route::get('/actors',[ActorController::class,'index'])->middleware('auth');
 Route::get('/actors/creer',[ActorController::class, 'create'])->middleware('auth'); //TODO
 Route::post('actors/creer', [ActorController::class, 'store'])->middleware('auth'); //TODO
 
-Route::get('/actor/{id}', [ActorController::class,'show'])->middleware('auth'); //TODO
-Route::get('/actor/{actor}/modifier', [ActorController::class, 'edit'])->middleware('auth'); //TODO
-Route::put('/actor/{actor}/modifier', [ActorController::class, 'update'])->middleware('auth'); //TODO
-Route::delete('/actor/{id}', [ActorController::class, 'destroy'])->middleware('auth'); //TODO
+Route::get('/actor/{id}', [ActorController::class,'show'])->middleware('auth');
+Route::get('/actor/{actor}/modifier', [ActorController::class, 'edit'])->middleware('auth');
+Route::put('/actor/{actor}/modifier', [ActorController::class, 'update'])->middleware('auth');
+Route::delete('/actor/{id}', [ActorController::class, 'destroy'])->middleware('auth');
 
 // Panier
 Route::get('/panier');
 Route::post('/panier/{movie}');
+
+// React
+Route::get('/films-react', [MovieController::class, 'react']);
+
+// API
+Route::get('/api/films', function(){
+    $movies = Movie::with('category', 'actors')->get();
+
+    return $movies;
+});
