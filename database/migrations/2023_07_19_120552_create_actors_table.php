@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('actors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('biography')->nullable();
-            $table->date('birthday');
-            $table->date('deathday')->nullable();
-            $table->string('profil')->nullable();
-            $table->string('origin')->nullable();
+            $table->string('avatar')->nullable();
+            $table->date('birthday')->nullable();
             $table->timestamps();
+        });
+
+        Schema::create('actor_movie', function (Blueprint $table) {
+            $table->foreignId('actor_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('movie_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -29,5 +31,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('actors');
+        Schema::dropIfExists('actor_movie');
     }
 };

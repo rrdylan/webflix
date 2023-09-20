@@ -10,6 +10,12 @@ class Actor extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'birthday' => 'date', // String devient Carbon
+    ];
+
+    protected $guarded = [];
+    
     public function movies(): BelongsToMany
     {
         return $this->belongsToMany(Movie::class, 'actors_movies');

@@ -22,6 +22,7 @@ class ActorFactory extends Factory
             'name'=> fake()->sentence(10),
             //'original_name'=> $actor["original_name"],
             'pic'=>'picsum.photos/id/'.rand(0,1084).'/400/400',
+            'birthday' => fake()->dateTimeBetween('-80 years', '-18 years'),
         ];
     }
 }
