@@ -53,7 +53,7 @@
                     </li>
                     @else
                     <a href="/login" class="nav-link">Connexion</a>
-                    <a href="/sub" class="nav-link">Inscription</a>
+                    <a href="/subscribe" class="nav-link">Inscription</a>
                     @endauth
                 </div>
             </div>

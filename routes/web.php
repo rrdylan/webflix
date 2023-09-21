@@ -63,6 +63,8 @@ Route::delete('/logout', [LoginController::class, 'destroy']);
 // Mon compte
 Route::get('/account', [AccountController::class, 'index'])->middleware('auth');
 
+Route::get('/subscribe', [AccountController::class, 'create']);
+
 // Acteurs
 Route::get('/actors',[ActorController::class,'index'])->middleware('auth');
 Route::get('/actors/creer',[ActorController::class, 'create'])->middleware('auth'); //TODO

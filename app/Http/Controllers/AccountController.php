@@ -10,4 +10,17 @@ class AccountController extends Controller
     public function index(){
         return view('auth.account');
     }
+
+    // envoi à la page d'inscription
+    public function create(){
+        return view('auth.subscribe');
+    }
+
+    public function store(){}
+
+    public function edit(){}
+
+    public function update(){}
+
+    public function delete(){}
 }
