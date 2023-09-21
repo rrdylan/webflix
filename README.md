@@ -42,3 +42,9 @@ Si on veut lister les routes de l'application :
 ```bash
 php artisan route:list
 ```
+
+### Run app
+```bash
+php run dev # React + @vite
+php artisan serve # laravel
+```

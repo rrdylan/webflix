@@ -30,9 +30,25 @@ body {
     font-size: 14px;
     text-align: center;
 }
+.list-movie-synopsis{
+    height: 80px;
+    text-align: justify;
+    color: #000;
+}
 
 .list-movie-image{
     object-fit: cover;
     height: 400px;
 }
 
+.movie-title{
+    height:120px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-movie a{
+    text-decoration: none;
+}
